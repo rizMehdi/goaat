@@ -93,7 +93,7 @@ if city and category and classification and st.sidebar.button("Show Results"):
             st.error("Data for this category/class is yet to be integrated.")
         
     if ethnicity_image:
-        st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}", width=ethnicity_image.width // 2)
+        st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}", width=ethnicity_image.width // 3)
     else:
         st.error("Ethnicity data for this city/class is yet to be integrated.")
 
