@@ -93,7 +93,7 @@ if city and category and classification and st.sidebar.button("Show Results"):
             st.error("Data for this category/class is yet to be integrated.")
         
     if ethnicity_image:
-        st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}", width=ethnicity_image.width // 3)
+        st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}", width=ethnicity_image.width // 4)
     else:
         st.error("Ethnicity data for this city/class is yet to be integrated.")
 
@@ -104,10 +104,8 @@ st.sidebar.markdown("---")  # Add a line above the logos
 logo_paths = ["img/logos3.png"]
 logos = [img for img in logo_paths if os.path.exists(img)]
 
-# Add a container to fix the logos at the bottom
-with st.sidebar.container():
-    for logo in logos:
-        st.image(logo)
+for logo in logos:
+    st.sidebar.image(logo)
 
 # # Inject custom CSS to change the sidebar background color
 # st.markdown(
