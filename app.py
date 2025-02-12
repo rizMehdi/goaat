@@ -20,24 +20,11 @@ if os.path.exists(applogo):
 
 # Sidebar for Dropdown Selections
 st.sidebar.title("GNN Output Area Analysis Toolkit")
-# st.sidebar.header("Select Options")
 
-# # Display welcome text and images in the main area
-# st.write("Welcome to the toolkit. Select options on the side to explore.")
-
-# # Paths to the images
-# uk_image_path = "img/uk.png"
-# me_national_average_image_path = "img/me_national_average.png"
-
-# # Display images if they exist
-# if os.path.exists(uk_image_path):
-#     st.image(uk_image_path, caption="UK Image", width=500)
-
-# # if os.path.exists(me_national_average_image_path):
-# #     st.image(me_national_average_image_path, caption="ME National Average Image")
-
-
-
+# Reset Button
+if st.sidebar.button("Restart"):
+    if st.sidebar.confirm("Are you sure you want to reset the selections?"):
+        st.experimental_rerun()
 
 cities = ["Birmingham", "Bradford", "York", "Bristol", "London", "Manchester", "Leeds", "Liverpool", "Sheffield", "Coventry", "Leicester", "Nottingham", "Newcastle", "Southampton", "Portsmouth", "Brighton", "Plymouth", "Derby", "Stoke-on-Trent", "Wolverhampton", "Norwich", "Oxford", "Cambridge", "Bath", "Exeter", "Durham", "Lancaster", "Chester", "Hull", "Sunderland", "Ipswich", "Reading", "Milton Keynes", "Northampton", "Luton", "Swindon", "Worcester", "Gloucester", "Carlisle", "Lincoln", "Chelmsford", "Preston", "Blackpool", "Bolton", "Stockport", "Warrington", "Rochdale", "Oldham", "Bournemouth", "Poole", "Worthing", "Basildon", "Southend-on-Sea", "Middlesbrough", "Blackburn", "Burnley", "Telford", "Slough", "Wakefield", "Doncaster", "Rotherham", "Huddersfield", "Southport", "Peterborough", "Guildford", "Basingstoke", "Woking"]
 
@@ -96,13 +83,6 @@ if city and category and classification and st.sidebar.button("Show Results"):
         st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}", width=ethnicity_image.width // 4)
     else:
         st.error("Ethnicity data for this city/class is yet to be integrated.")
-
-
-
-    # Reset Button
-    if st.sidebar.button("Restart"):
-        if st.sidebar.confirm("Are you sure you want to reset the selections?"):
-            st.experimental_rerun()
 
 # Display logos at the bottom of the sidebar
 st.sidebar.markdown("---")  # Add a line above the logos
