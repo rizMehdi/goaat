@@ -25,7 +25,7 @@ st.markdown("""
         white-space: pre-wrap;
 		background-color: #FFFFFF;
 		border-radius: 4px 4px 0px 0px;
-		gap: 2px;
+		gap: 10px;
 		padding-top: 10px;
 		padding-bottom: 10px;
     }
