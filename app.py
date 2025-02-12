@@ -10,7 +10,7 @@ def load_image(image_path):
     
 
 # Streamlit App Configuration
-st.set_page_config(page_title="GNN Output Area Analysis Toolkit", layout="centered")
+st.set_page_config(page_title="GNN Output Area Analysis Toolkit", layout="wide")
 
 applogo = "img/applogo.png" 
 
@@ -78,7 +78,7 @@ if city and category and classification and st.sidebar.button("Show Results"):
     if right_image:
         right_image = right_image.rotate(-90, expand=True)
     
-    col1, col2, col3 = st.columns(3)
+    col1, col2 = st.columns(2)
         
     with col1:
         if left_image:
@@ -91,10 +91,9 @@ if city and category and classification and st.sidebar.button("Show Results"):
             st.image(right_image, caption=f"{classification} for {category} in {city}. This graph shows different features for {city} as compared to the national average. Higher value means its above national average.")
         else:
             st.error("Data for this category/class is yet to be integrated.")
-    
-    with col3:
+        
         if ethnicity_image:
-            st.image(ethnicity_image, caption=f"Ethnicity for {city}")
+            st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}")
         else:
             st.error("Ethnicity data for this city/class is yet to be integrated.")
 
