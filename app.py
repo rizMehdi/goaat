@@ -15,6 +15,23 @@ st.set_page_config(page_title="GNN Output Area Analysis Toolkit", layout="center
 st.sidebar.title("GNN Output Area Analysis Toolkit")
 # st.sidebar.header("Select Options")
 
+# Display welcome text and images in the main area
+st.write("Welcome to the toolkit. Select options on the side to explore.")
+
+# Paths to the images
+uk_image_path = "img/uk.png"
+me_national_average_image_path = "img/me_national_average.png"
+
+# Display images if they exist
+if os.path.exists(uk_image_path):
+    st.image(uk_image_path, caption="UK Image")
+
+if os.path.exists(me_national_average_image_path):
+    st.image(me_national_average_image_path, caption="ME National Average Image")
+
+
+
+
 cities = ["Birmingham", "Bradford", "York", "Bristol", "London", "Manchester", "Leeds", "Liverpool", "Sheffield", "Coventry", "Leicester", "Nottingham", "Newcastle", "Southampton", "Portsmouth", "Brighton", "Plymouth", "Derby", "Stoke-on-Trent", "Wolverhampton", "Norwich", "Oxford", "Cambridge", "Bath", "Exeter", "Durham", "Lancaster", "Chester", "Hull", "Sunderland", "Ipswich", "Reading", "Milton Keynes", "Northampton", "Luton", "Swindon", "Worcester", "Gloucester", "Carlisle", "Lincoln", "Chelmsford", "Preston", "Blackpool", "Bolton", "Stockport", "Warrington", "Rochdale", "Oldham", "Bournemouth", "Poole", "Worthing", "Basildon", "Southend-on-Sea", "Middlesbrough", "Blackburn", "Burnley", "Telford", "Slough", "Wakefield", "Doncaster", "Rotherham", "Huddersfield", "Southport", "Peterborough", "Guildford", "Basingstoke", "Woking"]
 
 category_mapping = {
