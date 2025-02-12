@@ -24,10 +24,10 @@ me_national_average_image_path = "img/me_national_average.png"
 
 # Display images if they exist
 if os.path.exists(uk_image_path):
-    st.image(uk_image_path, caption="UK Image")
+    st.image(uk_image_path, caption="UK Image", width=500)
 
-if os.path.exists(me_national_average_image_path):
-    st.image(me_national_average_image_path, caption="ME National Average Image")
+# if os.path.exists(me_national_average_image_path):
+#     st.image(me_national_average_image_path, caption="ME National Average Image")
 
 
 
