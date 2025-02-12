@@ -83,14 +83,29 @@ st.sidebar.markdown("---")  # Add a line above the logos
 logo_paths = ["img/prime.png", "img/hwu.png", "img/ukri.png"]
 logos = [img for img in logo_paths if os.path.exists(img)]
 
+# # Encase logos in a box with color #506c8c
+# st.sidebar.markdown(
+#     f"""
+#     <div style="background-color:#506c8c; padding:10px;">
+#         {"".join([f'<img src="{logo}" style="display:block; margin-bottom:10px; width:100px;" />' for logo in logos])}
+#     </div>
+#     """,
+#     unsafe_allow_html=True
+# )
 # Encase logos in a box with color #506c8c
 st.sidebar.markdown(
-    f"""
+    """
     <div style="background-color:#506c8c; padding:10px;">
-        {"".join([f'<img src="{logo}" style="display:block; margin-bottom:10px; width:100px;" />' for logo in logos])}
-    </div>
     """,
     unsafe_allow_html=True
 )
 
-# Assuming other necessary code below
+for logo in logos:
+    st.sidebar.image(logo, width=100)
+
+st.sidebar.markdown(
+    """
+    </div>
+    """,
+    unsafe_allow_html=True
+)
