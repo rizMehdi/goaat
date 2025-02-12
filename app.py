@@ -89,12 +89,12 @@ if city and category and st.sidebar.button("Show Results"):
                     right_image = right_image.rotate(-90, expand=True)
                 
                 if right_image:
-                    st.image(right_image, caption=f"{classification} for {category} in {city}. This graph shows different features for {city} as compared to the national average. Higher value means its above national average.")
+                    st.image(right_image, caption=f"{classification} for {category} in {city}. This graph shows different features for {city} as compared to the national average. Higher value means its above national average.", width=right_image.width // 1)
                 else:
                     st.error("Data for this category/class is yet to be integrated.")
                 
                 if ethnicity_image:
-                    st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}", width=ethnicity_image.width // 2)
+                    st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}", width=ethnicity_image.width // 3)
                 else:
                     st.error("Ethnicity data for this city/class is yet to be integrated.")
 
