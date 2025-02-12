@@ -85,6 +85,11 @@ if city and category and st.sidebar.button("Show Results"):
                 right_image = load_image(right_image_path)
                 ethnicity_image = load_image(ethnicity_image_path)
                 
+                if ethnicity_image:
+                    st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}", width=ethnicity_image.width // 3)
+                else:
+                    st.error("Ethnicity data for this city/class is yet to be integrated.")
+               
                 if right_image:
                     right_image = right_image.rotate(-90, expand=True)
                 
@@ -93,10 +98,6 @@ if city and category and st.sidebar.button("Show Results"):
                 else:
                     st.error("Data for this category/class is yet to be integrated.")
                 
-                if ethnicity_image:
-                    st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}", width=ethnicity_image.width // 3)
-                else:
-                    st.error("Ethnicity data for this city/class is yet to be integrated.")
 
 # Display logos at the bottom of the sidebar
 st.sidebar.markdown("---")  # Add a line above the logos
