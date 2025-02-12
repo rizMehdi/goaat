@@ -13,15 +13,26 @@ def load_image(image_path):
 st.set_page_config(page_title="GNN Output Area Analysis Toolkit", layout="wide", initial_sidebar_state="expanded")
 
 applogo = "img/applogo.png" 
-# Inject CSS to disable full-screen hover effect
-hide_img_fs = '''
-<style>
-button[title="View fullscreen"]{
-    visibility: hidden;}
-</style>
-'''
 
-st.markdown(hide_img_fs, unsafe_allow_html=True)
+
+st.markdown("""
+<style>
+	.stTabs [data-baseweb="tab-list"] {
+		gap: 2px;
+    }
+	.stTabs [data-baseweb="tab"] {
+		height: 50px;
+        white-space: pre-wrap;
+		background-color: #F0F2F6;
+		border-radius: 4px 4px 0px 0px;
+		gap: 1px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+    }
+	.stTabs [aria-selected="true"] {
+  		background-color: #FFFFFF;
+	}
+</style>""", unsafe_allow_html=True)
 
 # Hide the top ribbon and Streamlit branding
 st.markdown("""
