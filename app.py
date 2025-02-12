@@ -26,6 +26,21 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
+# Inject CSS for tab colors
+st.markdown(
+    """
+    <style>
+        div[data-baseweb="tab-list"] button:nth-child(1) {background-color: #FF5733 !important; color: white !important;} /* First Tab */
+        div[data-baseweb="tab-list"] button:nth-child(2) {background-color: #33A1FF !important; color: white !important;} /* Second Tab */
+        div[data-baseweb="tab-list"] button:nth-child(3) {background-color: #33FF57 !important; color: white !important;} /* Third Tab */
+        
+        /* Optional: Change tab hover effect */
+        div[data-baseweb="tab-list"] button:hover {opacity: 0.8;}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 
 
 # Display images if they exist
