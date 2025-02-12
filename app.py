@@ -44,7 +44,6 @@ cities = ["Birmingham", "Bradford", "York", "Bristol", "London", "Manchester", "
 category_mapping = {
     "House Ownership": "Property",
     "Occupation": "Economic",
-    "Ethnicity": "Eth",
     "Poverty": "Poverty",
     "Health": "Health",
     "Energy": "Energy"
@@ -70,14 +69,16 @@ if city and category and classification and st.sidebar.button("Show Results"):
     category_path = category_mapping[category]
     left_image_path = f"img/{city}.png"
     right_image_path = f"img/{city}_{category_path}_{classification}.png"
+    ethnicity_image_path = f"img/{city}_Eth_Class_{classification[-1]}.png"
     
     left_image = load_image(left_image_path)
     right_image = load_image(right_image_path)
+    ethnicity_image = load_image(ethnicity_image_path)
     
     if right_image:
         right_image = right_image.rotate(-90, expand=True)
     
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
         
     with col1:
         if left_image:
@@ -90,6 +91,12 @@ if city and category and classification and st.sidebar.button("Show Results"):
             st.image(right_image, caption=f"{classification} for {category} in {city}. This graph shows different features for {city} as compared to the national average. Higher value means its above national average.")
         else:
             st.error("Data for this category/class is yet to be integrated.")
+    
+    with col3:
+        if ethnicity_image:
+            st.image(ethnicity_image, caption=f"Ethnicity for {city}")
+        else:
+            st.error("Ethnicity data for this city/class is yet to be integrated.")
 
 # Display logos at the bottom of the sidebar
 st.sidebar.markdown("---")  # Add a line above the logos
