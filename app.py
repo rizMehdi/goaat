@@ -67,6 +67,9 @@ if city and category and classification and st.sidebar.button("Show Results"):
     left_image = load_image(left_image_path)
     right_image = load_image(right_image_path)
     
+    if right_image:
+        right_image = right_image.rotate(-90, expand=True)
+    
     col1, col2 = st.columns(2)
         
     with col1:
