@@ -47,7 +47,7 @@ else:
     category = None
 
 if category:
-    classification = st.sidebar.selectbox("Select a Classification", classifications, key=f"classification_{category}")
+    classification = "Class_0"
 else:
     classification = None
 
