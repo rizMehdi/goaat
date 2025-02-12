@@ -81,13 +81,13 @@ if city and category and classification and st.sidebar.button("Show Results"):
         
     with col1:
         if left_image:
-            st.image(left_image, caption=f"{city} Image")
+            st.image(left_image, caption=f"{city}")
         else:
             st.error("Data for this city is yet to be integrated.")
         
     with col2:
         if right_image:
-            st.image(right_image, caption=f"{city} {category} {classification} Image")
+            st.image(right_image, caption=f"{classification} for {category} in {city} ")
         else:
             st.error("Data for this category/class is yet to be integrated.")
 
