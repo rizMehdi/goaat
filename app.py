@@ -93,19 +93,19 @@ logos = [img for img in logo_paths if os.path.exists(img)]
 #     unsafe_allow_html=True
 # )
 # Encase logos in a box with color #506c8c
-st.sidebar.markdown(
-    """
-    <div style="background-color:#506c8c; padding:10px;">
-    """,
-    unsafe_allow_html=True
-)
+
 
 for logo in logos:
     st.sidebar.image(logo, width=100)
 
-st.sidebar.markdown(
+# Inject custom CSS to change the sidebar background color
+st.markdown(
     """
-    </div>
+    <style>
+    .css-1d391kg {  /* This class name may change, inspect the sidebar element to get the correct class */
+        background-color: #506c8c !important;
+    }
+    </style>
     """,
     unsafe_allow_html=True
 )
