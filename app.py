@@ -86,7 +86,7 @@ if city and category and st.sidebar.button("Show Results"):
                 ethnicity_image = load_image(ethnicity_image_path)
                 
                 if ethnicity_image:
-                    st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}", width=ethnicity_image.width // 3)
+                    st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}", width=350)
                 else:
                     st.error("Ethnicity data for this city/class is yet to be integrated.")
                
