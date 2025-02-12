@@ -66,17 +66,14 @@ if city and category and st.sidebar.button("Show Results"):
     col0, col1 = st.columns(2)
         
     with col0:
-        if right_image:
-            st.image(right_image, caption=f"{classification} for {category} in {city}. This graph shows different features for {city} as compared to the national average. Higher value means its above national average.")
-        else:
-            st.error("Data for this category/class is yet to be integrated.")
-    
-    with col1:
         if left_image:
             st.image(left_image, caption=f"{city}")
         else:
             st.error("Data for this city is yet to be integrated.")
         
+    
+    with col1:
+
         tabs = st.tabs(classifications)
         
         for i, tab in enumerate(tabs):
