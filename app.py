@@ -14,6 +14,20 @@ st.set_page_config(page_title="GNN Output Area Analysis Toolkit", layout="wide",
 
 applogo = "img/applogo.png" 
 
+# Hide the top ribbon and Streamlit branding
+st.markdown("""
+    <style>
+        /* Hide top ribbon (hamburger menu) */
+        header {visibility: hidden;}
+
+        /* Hide "Made with Streamlit" footer */
+        footer {visibility: hidden;}
+    </style>
+""", unsafe_allow_html=True)
+
+
+
+
 # Display images if they exist
 if os.path.exists(applogo):
     st.sidebar.image(applogo, width=70)
