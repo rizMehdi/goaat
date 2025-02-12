@@ -46,7 +46,7 @@ category_mapping = {
 categories = list(category_mapping.keys())
 classifications = [f"Class_{i}" for i in range(8)]
 
-city = st.sidebar.selectbox("Select a Location", cities)
+city = st.sidebar.selectbox("Select a Location", [""] + cities)
 category = st.sidebar.selectbox("Select a Category", categories)
 classification = st.sidebar.selectbox("Select a Classification", classifications)
 
