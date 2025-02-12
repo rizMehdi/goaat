@@ -28,6 +28,9 @@ st.markdown("""
 		gap: 10px;
 		padding-top: 10px;
 		padding-bottom: 10px;
+        padding-right: 5px;
+        padding-left: 5px;
+        
     }
 	.stTabs [aria-selected="true"] {
   		background-color: #F0F2F6;
