@@ -85,7 +85,7 @@ logo_paths = ["img/logos3.png"]
 logos = [img for img in logo_paths if os.path.exists(img)]
 
 for logo in logos:
-    st.sidebar.image(logo, width=100)
+    st.sidebar.image(logo)
 
 # # Inject custom CSS to change the sidebar background color
 # st.markdown(
