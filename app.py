@@ -14,17 +14,14 @@ st.set_page_config(page_title="GNN Output Area Analysis Toolkit", layout="wide",
 
 applogo = "img/applogo.png" 
 # Inject CSS to disable full-screen hover effect
-st.markdown(
-    """
-    <style>
-        /* Disable image expand on hover */
-        div[data-testid="stImage"] img {
-            pointer-events: none;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+hide_img_fs = '''
+<style>
+button[title="View fullscreen"]{
+    visibility: hidden;}
+</style>
+'''
+
+st.markdown(hide_img_fs, unsafe_allow_html=True)
 
 # Hide the top ribbon and Streamlit branding
 st.markdown("""
