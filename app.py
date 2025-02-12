@@ -62,17 +62,17 @@ if st.sidebar.button("Show Results"):
 
 col1, col2 = st.columns(2)
     
-    with col1:
-        if left_image:
-            st.image(left_image, caption=f"{city} Image")
-        else:
-            st.error("Data for this city is yet to be integrated.")
+with col1:
+    if left_image:
+        st.image(left_image, caption=f"{city} Image")
+    else:
+        st.error("Data for this city is yet to be integrated.")
     
-    with col2:
-        if right_image:
-            st.image(right_image, caption=f"{city} {category} {classification} Image")
-        else:
-            st.error("Data for this category/class is yet to be integrated.")
+with col2:
+    if right_image:
+        st.image(right_image, caption=f"{city} {category} {classification} Image")
+    else:
+        st.error("Data for this category/class is yet to be integrated.")
 
 # Display logos at the bottom of the sidebar
 st.sidebar.markdown("---")  # Add a line above the logos
