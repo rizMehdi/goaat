@@ -97,6 +97,13 @@ if city and category and classification and st.sidebar.button("Show Results"):
     else:
         st.error("Ethnicity data for this city/class is yet to be integrated.")
 
+
+
+# Reset Button
+if st.sidebar.button("Restart"):
+    if st.sidebar.confirm("Are you sure you want to reset the selections?"):
+        st.experimental_rerun()
+
 # Display logos at the bottom of the sidebar
 st.sidebar.markdown("---")  # Add a line above the logos
 
