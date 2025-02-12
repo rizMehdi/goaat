@@ -43,7 +43,7 @@ cities = ["Birmingham", "Bradford", "York", "Bristol", "London", "Manchester", "
 
 category_mapping = {
     "House Ownership": "Property",
-    "Economic": "Economic",
+    "Occupation": "Economic",
     "Ethnicity": "Eth",
     "Poverty": "Poverty",
     "Health": "Health",
