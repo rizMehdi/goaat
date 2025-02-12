@@ -22,9 +22,9 @@ if os.path.exists(applogo):
 st.sidebar.title("GNN Output Area Analysis Toolkit")
 
 # Reset Button
-if st.sidebar.button("Restart"):
-    if st.sidebar.confirm("Are you sure you want to reset the selections?"):
-        st.experimental_rerun()
+# if st.sidebar.button("Restart"):
+#     if st.sidebar.confirm("Are you sure you want to reset the selections?"):
+#         st.experimental_rerun()
 
 cities = ["Birmingham", "Bradford", "York", "Bristol", "London", "Manchester", "Leeds", "Liverpool", "Sheffield", "Coventry", "Leicester", "Nottingham", "Newcastle", "Southampton", "Portsmouth", "Brighton", "Plymouth", "Derby", "Stoke-on-Trent", "Wolverhampton", "Norwich", "Oxford", "Cambridge", "Bath", "Exeter", "Durham", "Lancaster", "Chester", "Hull", "Sunderland", "Ipswich", "Reading", "Milton Keynes", "Northampton", "Luton", "Swindon", "Worcester", "Gloucester", "Carlisle", "Lincoln", "Chelmsford", "Preston", "Blackpool", "Bolton", "Stockport", "Warrington", "Rochdale", "Oldham", "Bournemouth", "Poole", "Worthing", "Basildon", "Southend-on-Sea", "Middlesbrough", "Blackburn", "Burnley", "Telford", "Slough", "Wakefield", "Doncaster", "Rotherham", "Huddersfield", "Southport", "Peterborough", "Guildford", "Basingstoke", "Woking"]
 
@@ -52,18 +52,11 @@ else:
     classification = None
 
 # Show Images Button
-if city and category and classification and st.sidebar.button("Show Results"):
+if city and category and st.sidebar.button("Show Results"):
     category_path = category_mapping[category]
     left_image_path = f"img/{city}.png"
-    right_image_path = f"img/{city}_{category_path}_{classification}.png"
-    ethnicity_image_path = f"img/{city}_Eth_Class_{classification[-1]}.png"
     
     left_image = load_image(left_image_path)
-    right_image = load_image(right_image_path)
-    ethnicity_image = load_image(ethnicity_image_path)
-    
-    if right_image:
-        right_image = right_image.rotate(-90, expand=True)
     
     col1, col2 = st.columns(2)
         
@@ -72,17 +65,30 @@ if city and category and classification and st.sidebar.button("Show Results"):
             st.image(left_image, caption=f"{city}")
         else:
             st.error("Data for this city is yet to be integrated.")
-        
-    with col2:
-        if right_image:
-            st.image(right_image, caption=f"{classification} for {category} in {city}. This graph shows different features for {city} as compared to the national average. Higher value means its above national average.")
-        else:
-            st.error("Data for this category/class is yet to be integrated.")
-        
-    if ethnicity_image:
-        st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}", width=ethnicity_image.width // 4)
-    else:
-        st.error("Ethnicity data for this city/class is yet to be integrated.")
+    
+    tabs = st.tabs(classifications)
+    
+    for i, tab in enumerate(tabs):
+        with tab:
+            classification = classifications[i]
+            right_image_path = f"img/{city}_{category_path}_{classification}.png"
+            ethnicity_image_path = f"img/{city}_Eth_Class_{classification[-1]}.png"
+            
+            right_image = load_image(right_image_path)
+            ethnicity_image = load_image(ethnicity_image_path)
+            
+            if right_image:
+                right_image = right_image.rotate(-90, expand=True)
+            
+            if right_image:
+                st.image(right_image, caption=f"{classification} for {category} in {city}. This graph shows different features for {city} as compared to the national average. Higher value means its above national average.")
+            else:
+                st.error("Data for this category/class is yet to be integrated.")
+            
+            if ethnicity_image:
+                st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}", width=ethnicity_image.width // 4)
+            else:
+                st.error("Ethnicity data for this city/class is yet to be integrated.")
 
 # Display logos at the bottom of the sidebar
 st.sidebar.markdown("---")  # Add a line above the logos
