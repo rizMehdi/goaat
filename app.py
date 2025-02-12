@@ -92,10 +92,10 @@ if city and category and classification and st.sidebar.button("Show Results"):
         else:
             st.error("Data for this category/class is yet to be integrated.")
         
-        if ethnicity_image:
-            st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}")
-        else:
-            st.error("Ethnicity data for this city/class is yet to be integrated.")
+    if ethnicity_image:
+        st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}")
+    else:
+        st.error("Ethnicity data for this city/class is yet to be integrated.")
 
 # Display logos at the bottom of the sidebar
 st.sidebar.markdown("---")  # Add a line above the logos
