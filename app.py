@@ -12,8 +12,8 @@ def load_image(image_path):
 st.set_page_config(page_title="GNN Output Area Analysis Toolkit", layout="centered")
 
 # Sidebar for Dropdown Selections
-st.sidebar.title("Output Area Analysis")
-st.sidebar.header("Select Options")
+st.sidebar.title("GNN Output Area Analysis Toolkit")
+# st.sidebar.header("Select Options")
 
 cities = ["Birmingham", "Bradford", "York", "Bristol", "London", "Manchester", "Leeds", "Liverpool", "Sheffield", "Coventry", "Leicester", "Nottingham", "Newcastle", "Southampton", "Portsmouth", "Brighton", "Plymouth", "Derby", "Stoke-on-Trent", "Wolverhampton", "Norwich", "Oxford", "Cambridge", "Bath", "Exeter", "Durham", "Lancaster", "Chester", "Hull", "Sunderland", "Ipswich", "Reading", "Milton Keynes", "Northampton", "Luton", "Swindon", "Worcester", "Gloucester", "Carlisle", "Lincoln", "Chelmsford", "Preston", "Blackpool", "Bolton", "Stockport", "Warrington", "Rochdale", "Oldham", "Bournemouth", "Poole", "Worthing", "Basildon", "Southend-on-Sea", "Middlesbrough", "Blackburn", "Burnley", "Telford", "Slough", "Wakefield", "Doncaster", "Rotherham", "Huddersfield", "Southport", "Peterborough", "Guildford", "Basingstoke", "Woking"]
 
@@ -83,29 +83,17 @@ st.sidebar.markdown("---")  # Add a line above the logos
 logo_paths = ["img/prime.png", "img/hwu.png", "img/ukri.png"]
 logos = [img for img in logo_paths if os.path.exists(img)]
 
-# # Encase logos in a box with color #506c8c
-# st.sidebar.markdown(
-#     f"""
-#     <div style="background-color:#506c8c; padding:10px;">
-#         {"".join([f'<img src="{logo}" style="display:block; margin-bottom:10px; width:100px;" />' for logo in logos])}
-#     </div>
-#     """,
-#     unsafe_allow_html=True
-# )
-# Encase logos in a box with color #506c8c
-
-
 for logo in logos:
     st.sidebar.image(logo, width=100)
 
-# Inject custom CSS to change the sidebar background color
-st.markdown(
-    """
-    <style>
-    .css-1d391kg {  /* This class name may change, inspect the sidebar element to get the correct class */
-        background-color: #506c8c !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+# # Inject custom CSS to change the sidebar background color
+# st.markdown(
+#     """
+#     <style>
+#     .css-1d391kg {  /* This class name may change, inspect the sidebar element to get the correct class */
+#         background-color: #506c8c !important;
+#     }
+#     </style>
+#     """,
+#     unsafe_allow_html=True
+# )
