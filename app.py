@@ -16,7 +16,7 @@ applogo = "img/applogo.png"
 
 # Display images if they exist
 if os.path.exists(applogo):
-    st.image(applogo, width=100)
+    st.sidebar.image(applogo, width=70)
 
 # Sidebar for Dropdown Selections
 st.sidebar.title("GNN Output Area Analysis Toolkit")
