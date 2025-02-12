@@ -42,50 +42,20 @@ if st.sidebar.button("Show Results"):
     left_image = load_image(left_image_path)
     right_image = load_image(right_image_path)
     
-#     col1, col2 = st.columns(2)
+    col1, col2 = st.columns(2)
     
-#     with col1:
-#         if left_image:
-#             st.image(left_image, caption=f"{city} Image")
-#         else:
-#             st.error("Data for this city is yet to be integrated.")
+    with col1:
+        if left_image:
+            st.image(left_image, caption=f"{city} Image")
+        else:
+            st.error("Data for this city is yet to be integrated.")
     
-#     with col2:
-#         if right_image:
-#             st.image(right_image, caption=f"{city} {category} {classification} Image")
-#         else:
-#             st.error("Data for this category/class is yet to be integrated.")
-
-# # Display logos at the bottom of the sidebar
-# logo_paths = ["img/prime.png", "img/hwu.png", "img/ukri.png"]
-# st.sidebar.image([img for img in logo_paths if os.path.exists(img)], width=100)
-
-col1, col2 = st.columns(2)
-    
-with col1:
-    if left_image:
-        st.image(left_image, caption=f"{city} Image")
-    else:
-        st.error("Data for this city is yet to be integrated.")
-    
-with col2:
-    if right_image:
-        st.image(right_image, caption=f"{city} {category} {classification} Image")
-    else:
-        st.error("Data for this category/class is yet to be integrated.")
+    with col2:
+        if right_image:
+            st.image(right_image, caption=f"{city} {category} {classification} Image")
+        else:
+            st.error("Data for this category/class is yet to be integrated.")
 
 # Display logos at the bottom of the sidebar
-st.sidebar.markdown("---")  # Add a line above the logos
-
 logo_paths = ["img/prime.png", "img/hwu.png", "img/ukri.png"]
-logos = [img for img in logo_paths if os.path.exists(img)]
-
-# Encase logos in a box with color #506c8c
-st.sidebar.markdown(
-    f"""
-    <div style="background-color:#506c8c; padding:10px;">
-        {"".join([f'<img src="{logo}" style="display:block; margin-bottom:10px; width:100px;" />' for logo in logos])}
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+st.sidebar.image([img for img in logo_paths if os.path.exists(img)], width=100)
