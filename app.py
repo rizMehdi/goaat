@@ -11,14 +11,8 @@ def load_image(image_path):
 # Streamlit App Configuration
 st.set_page_config(page_title="GNN Output Area Analysis Toolkit", layout="centered")
 
-# Display logos
-logo_paths = ["img/prime.png", "img/hwu.png", "img/ukri.png"]
-st.image([img for img in logo_paths if os.path.exists(img)], width=100)
-
-# Page Title
-st.title("Output Area Analysis")
-
 # Sidebar for Dropdown Selections
+st.sidebar.title("Output Area Analysis")
 st.sidebar.header("Select Options")
 
 cities = ["Birmingham", "Bradford", "York", "Bristol", "London", "Manchester", "Leeds", "Liverpool", "Sheffield", "Coventry", "Leicester", "Nottingham", "Newcastle", "Southampton", "Portsmouth", "Brighton", "Plymouth", "Derby", "Stoke-on-Trent", "Wolverhampton", "Norwich", "Oxford", "Cambridge", "Bath", "Exeter", "Durham", "Lancaster", "Chester", "Hull", "Sunderland", "Ipswich", "Reading", "Milton Keynes", "Northampton", "Luton", "Swindon", "Worcester", "Gloucester", "Carlisle", "Lincoln", "Chelmsford", "Preston", "Blackpool", "Bolton", "Stockport", "Warrington", "Rochdale", "Oldham", "Bournemouth", "Poole", "Worthing", "Basildon", "Southend-on-Sea", "Middlesbrough", "Blackburn", "Burnley", "Telford", "Slough", "Wakefield", "Doncaster", "Rotherham", "Huddersfield", "Southport", "Peterborough", "Guildford", "Basingstoke", "Woking"]
@@ -40,7 +34,7 @@ category = st.sidebar.selectbox("Select a Category", categories)
 classification = st.sidebar.selectbox("Select a Classification", classifications)
 
 # Show Images Button
-if st.sidebar.button("Show Images"):
+if st.sidebar.button("Show Results"):
     category_path = category_mapping[category]
     left_image_path = f"img/{city}.png"
     right_image_path = f"img/{city}_{category_path}_{classification}.png"
@@ -60,4 +54,8 @@ if st.sidebar.button("Show Images"):
         if right_image:
             st.image(right_image, caption=f"{city} {category} {classification} Image")
         else:
-            st.error("Data dor this category/class is yet to be integrated.")
+            st.error("Data for this category/class is yet to be integrated.")
+
+# Display logos at the bottom of the sidebar
+logo_paths = ["img/prime.png", "img/hwu.png", "img/ukri.png"]
+st.sidebar.image([img for img in logo_paths if os.path.exists(img)], width=100)
