@@ -56,12 +56,12 @@ classifications = [f"Class_{i}" for i in range(8)]
 city = st.sidebar.selectbox("Select a Location", [""] + cities)
 
 if city:
-    category = st.sidebar.selectbox("Select a Category", [""] + categories)
+    category = st.sidebar.selectbox("Select a Category", [""] + categories, key=f"category_{city}")
 else:
     category = None
 
 if category:
-    classification = st.sidebar.selectbox("Select a Classification", classifications)
+    classification = st.sidebar.selectbox("Select a Classification", classifications, key=f"classification_{category}")
 else:
     classification = None
 
