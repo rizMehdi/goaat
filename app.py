@@ -87,7 +87,7 @@ if city and category and classification and st.sidebar.button("Show Results"):
         
     with col2:
         if right_image:
-            st.image(right_image, caption=f"{classification} for {category} in {city}. \n this graph shows different features above or below the national average")
+            st.image(right_image, caption=f"{classification} for {category} in {city}. This graph shows different features for {city} as compared to the national average. Higher value means its above national average.")
         else:
             st.error("Data for this category/class is yet to be integrated.")
 
