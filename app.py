@@ -23,14 +23,14 @@ st.markdown("""
 	.stTabs [data-baseweb="tab"] {
 		height: 50px;
         white-space: pre-wrap;
-		background-color: #F0F2F6;
+		background-color: #FFFFFF;
 		border-radius: 4px 4px 0px 0px;
-		gap: 1px;
+		gap: 2px;
 		padding-top: 10px;
 		padding-bottom: 10px;
     }
 	.stTabs [aria-selected="true"] {
-  		background-color: #FFFFFF;
+  		background-color: #F0F2F6;
 	}
 </style>""", unsafe_allow_html=True)
 
