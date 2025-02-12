@@ -7,9 +7,16 @@ def load_image(image_path):
         return Image.open(image_path)
     else:
         return None
+    
 
 # Streamlit App Configuration
 st.set_page_config(page_title="GNN Output Area Analysis Toolkit", layout="centered")
+
+applogo = "img/applogo.png" 
+
+# Display images if they exist
+if os.path.exists(applogo):
+    st.image(applogo, width=100)
 
 # Sidebar for Dropdown Selections
 st.sidebar.title("GNN Output Area Analysis Toolkit")
