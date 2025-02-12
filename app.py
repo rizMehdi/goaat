@@ -10,7 +10,7 @@ def load_image(image_path):
     
 
 # Streamlit App Configuration
-st.set_page_config(page_title="GNN Output Area Analysis Toolkit", layout="centered", initial_sidebar_state="expanded")
+st.set_page_config(page_title="GNN Output Area Analysis Toolkit", layout="wide", initial_sidebar_state="expanded")
 
 applogo = "img/applogo.png" 
 
@@ -94,7 +94,7 @@ if city and category and st.sidebar.button("Show Results"):
                     st.error("Data for this category/class is yet to be integrated.")
                 
                 if ethnicity_image:
-                    st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}", width=ethnicity_image.width // 4)
+                    st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}", width=ethnicity_image.width // 2)
                 else:
                     st.error("Ethnicity data for this city/class is yet to be integrated.")
 
