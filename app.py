@@ -80,7 +80,8 @@ if st.sidebar.button("Show Results"):
 # Display logos at the bottom of the sidebar
 st.sidebar.markdown("---")  # Add a line above the logos
 
-logo_paths = ["img/prime.png", "img/hwu.png", "img/ukri.png"]
+# logo_paths = ["img/prime.png", "img/hwu.png", "img/ukri.png"]
+logo_paths = ["img/logos3.png"]
 logos = [img for img in logo_paths if os.path.exists(img)]
 
 for logo in logos:
