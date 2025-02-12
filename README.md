@@ -1,2 +1,2 @@
-# goaat
-GNN Output Area Analysis Toolkit (GOAAT) 
+# GOAAT
+GNN Output Area Analysis Toolkit
