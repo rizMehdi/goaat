@@ -137,7 +137,8 @@ if city and category and st.sidebar.button("Show Results"):
     # if right_image:
     #     right_image = right_image.rotate(-90, expand=True)
     
-    col0, col1 = st.columns(2)
+    # col0, col1 = st.columns(2)
+    col0, col1 = st.columns([1, 2])  # Ratio 1:2
         
     with col0:
         if left_image:
