@@ -110,7 +110,7 @@ else:
 # Show Images Button
 if city and category and st.sidebar.button("Show Results"):
     category_path = category_mapping[category]
-    # left_image_path = f"img/{city}.png"
+    left_image_path = f"img/{city}.png"
     # # right_image_path = f"img/{city}_{category_path}_{classification}.png"
     # # right_image_path = f"img/{city}_{classification}_{category_path}.png"
     # right_image_path = f"img/{city}_{classNum}_{category_path}.png"
@@ -119,8 +119,8 @@ if city and category and st.sidebar.button("Show Results"):
     # # img/Birmingham_0_HouseOwnership.png
     # st.write(right_image_path)
     
-    # left_image = load_image(left_image_path)
-    # # st.write(left_image_path)
+    left_image = load_image(left_image_path)
+    # st.write(left_image_path)
     # right_image = load_image(right_image_path)
     # st.write(right_image_path)
     
