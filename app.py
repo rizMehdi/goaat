@@ -17,8 +17,8 @@ st.markdown(
     """
     <style>
         [data-testid="stSidebar"] {
-            width: 550px !important;
-            min-width: 550px !important;
+            width: 650px !important;
+            min-width: 650px !important;
         }
     </style>
     """,
@@ -127,7 +127,7 @@ side1, side2 = st.sidebar.columns([1, 2])  # Split sidebar into two columns
     
 with side1:
     # Existing sidebar content
-    st.title("GNN Output Area Analysis Toolkit")
+    # st.title("GNN Output Area Analysis Toolkit")
     city = st.selectbox("Select a Location", [""] + cities, key="side1_city_selectbox")
     if city:
         category = st.selectbox("Select a Category", [""] + categories, key=f"side1_category_{city}")
