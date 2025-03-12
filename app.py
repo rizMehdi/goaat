@@ -140,12 +140,13 @@ with side1:
     else:
         classification = None
         classNum = None
+
+
+with side2:
     if city and category and st.sidebar.button("Show Results"):
         category_path = category_mapping[category]
         left_image_path = f"img/{city}.png"
         left_image = load_image(left_image_path)
-
-with side2:
     if left_image:
         st.image(left_image, caption=f"{city}", width=350)
     else:
