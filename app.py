@@ -132,6 +132,13 @@ else:
 if city and category and st.sidebar.button("Show Results"):
     category_path = category_mapping[category]
     left_image_path = f"img/{city}.png"
+# # right_image_path = f"img/{city}_{category_path}_{classification}.png"
+    # # right_image_path = f"img/{city}_{classification}_{category_path}.png"
+    # right_image_path = f"img/{city}_{classNum}_{category_path}.png"
+    # # Birmingham_Property_Class_0.png prev
+    # # Birmingham_0_HouseOwnership.png new
+    # # img/Birmingham_0_HouseOwnership.png
+    # st.write(right_image_path)
     # # right_image_path = f"img/{city}_{category_path}_{classification}.png"
     # # right_image_path = f"img/{city}_{classification}_{category_path}.png"
     # right_image_path = f"img/{city}_{classNum}_{category_path}.png"
@@ -152,6 +159,14 @@ if city and category and st.sidebar.button("Show Results"):
     col0, pad, col1 = st.columns([1,0.2 ,2])  # Ratio 1:2
         
     with col0:
+        # st.markdown('<div style="padding-top: 20px;"></div>', unsafe_allow_html=True)  # Add extra padding on top
+        st.markdown(
+        """
+        <div style="background-color:#fffcfa; padding-top:20px;">
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
         if left_image:
             st.image(left_image, caption=f"{city}", width=350)
         else:
