@@ -34,7 +34,7 @@ st.markdown("""
 	.stTabs [data-baseweb="tab"] {
 		height: 30px;
         white-space: pre-wrap;
-		background-color: #fcf7fb;
+		background-color: #ffffff;
 		border-radius: 4px 4px 0px 0px;
 		gap: 10px;
 		padding-top: 10px;
@@ -44,7 +44,7 @@ st.markdown("""
         
     }
 	.stTabs [aria-selected="true"] {
-  		background-color: #F0F2F6;
+  		background-color: #fceae3;
 	}
 </style>""", unsafe_allow_html=True)
 
