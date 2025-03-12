@@ -143,7 +143,7 @@ if city and category and st.sidebar.button("Show Results"):
     with col0:
         st.markdown('<div style="padding-top: 40px;"></div>', unsafe_allow_html=True)  # Add extra padding on top
         if left_image:
-            st.image(left_image, caption=f"{city}", width=400)
+            st.image(left_image, caption=f"{city}", width=350)
         else:
             st.error("Map Data for this city is yet to be integrated.")
     
