@@ -58,6 +58,17 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+st.markdown(
+    """
+    <style>
+        [data-testid="stAppViewContainer"] {
+            margin-top: -50px;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 
 # Inject CSS for tab colors
 # st.markdown(
