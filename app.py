@@ -89,7 +89,7 @@ st.markdown(
 
 # Display images if they exist
 if os.path.exists(applogo):
-    st.sidebar.logo(applogo)
+    st.logo(applogo)
     # st.sidebar.image(applogo, width=70)
 
 # Sidebar for Dropdown Selections
