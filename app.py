@@ -171,8 +171,8 @@ if city and category and st.sidebar.button("Show Results"):
                 else:
                     st.error("Ethnicity pie chart for this city/class is yet to be integrated.")
                
-                if right_image:
-                    right_image = right_image.rotate(-90, expand=True)
+                # if right_image:
+                #     right_image = right_image.rotate(-90, expand=True)
                 
                 if right_image:
                     st.image(right_image, caption=f"{classification} for {category} in {city}. This graph shows different features for {city} as compared to the national average. Higher value means its above national average.", width=450)
