@@ -89,7 +89,8 @@ st.markdown(
 
 # Display images if they exist
 if os.path.exists(applogo):
-    st.sidebar.image(applogo, width=70)
+    st.sidebar.logo(applogo)
+    # st.sidebar.image(applogo, width=70)
 
 # Sidebar for Dropdown Selections
 st.sidebar.title("GNN Output Area Analysis Toolkit")
