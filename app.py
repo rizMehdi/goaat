@@ -111,7 +111,7 @@ if city and category and st.sidebar.button("Show Results"):
     right_image_path = f"img/{city}_{classification}_{category_path}.png"
     # Birmingham_Property_Class_0.png prev
     # Birmingham_0_HouseOwnership.png new
-    # st.write(left_image_path, right_image_path)
+    st.write(right_image_path)
     
     left_image = load_image(left_image_path)
     right_image = load_image(right_image_path)
