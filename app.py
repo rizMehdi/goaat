@@ -143,12 +143,12 @@ if city and category and st.sidebar.button("Show Results"):
         for i, tab in enumerate(tabs):
             with tab:
                 classification = classifications[i]
-                classN = classNum[i]
+                # classN = classNum[i]
                 # right_image_path = f"img/{city}_{category_path}_{classification}.png"
-                right_image_path = f"img/{city}_{classN}_{category_path}.png"
+                right_image_path = f"img/{city}_{classification}_{category_path}.png"
                 
                 # ethnicity_image_path = f"img/{city}_Eth_Class_{classification[-1]}.png"
-                ethnicity_image_path = f"img/{city}_{classN}_Ethnicity.png"
+                ethnicity_image_path = f"img/{city}_{classification}_Ethnicity.png"
                 
                 right_image = load_image(right_image_path)
                 ethnicity_image = load_image(ethnicity_image_path)
