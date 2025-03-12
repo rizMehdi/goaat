@@ -159,14 +159,14 @@ if city and category and st.sidebar.button("Show Results"):
     col0, pad, col1 = st.columns([1,0.2 ,2])  # Ratio 1:2
         
     with col0:
-        # st.markdown('<div style="padding-top: 20px;"></div>', unsafe_allow_html=True)  # Add extra padding on top
-        st.markdown(
-        """
-        <div style="background-color:#fffcfa; padding-top:20px;">
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+        st.markdown('<div style="padding-top: 100px;"></div>', unsafe_allow_html=True)  # Add extra padding on top
+    #     st.markdown(
+    #     """
+    #     <div style="background-color:#fffcfa; padding-top:20px;">
+    #     </div>
+    #     """,
+    #     unsafe_allow_html=True
+    # )
         if left_image:
             st.image(left_image, caption=f"{city}", width=350)
         else:
