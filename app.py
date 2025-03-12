@@ -74,7 +74,18 @@ st.markdown("""
 #     unsafe_allow_html=True
 # )
 
-
+# Inject CSS for scrollable column
+st.markdown(
+    """
+    <style>
+        .scrollable-column {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 # Display images if they exist
 if os.path.exists(applogo):
@@ -148,7 +159,7 @@ if city and category and st.sidebar.button("Show Results"):
         
     
     with col1:
-
+        st.markdown('<div class="scrollable-column">', unsafe_allow_html=True)
         tabs = st.tabs(classifications)
         
         for i, tab in enumerate(tabs):
@@ -178,7 +189,7 @@ if city and category and st.sidebar.button("Show Results"):
                     st.image(right_image, caption=f"{classification} for {category} in {city}. This graph shows different features for {city} as compared to the national average. Higher value means its above national average.")#, width=450)
                 else:
                     st.error("Further data for this category/class is yet to be integrated.")
-                
+        st.markdown('</div>', unsafe_allow_html=True)
 
 # Display logos at the bottom of the sidebar
 st.sidebar.markdown("---")  # Add a line above the logos
