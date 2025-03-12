@@ -145,7 +145,7 @@ if city and category and st.sidebar.button("Show Results"):
             st.error("Map Data for this city is yet to be integrated.")
     
     with col1:
-        with st.container(height=600):  # Make col1 scrollable
+        with st.container():  # Make col1 scrollable
             tabs = st.tabs(classifications)
             
             for i, tab in enumerate(tabs):
