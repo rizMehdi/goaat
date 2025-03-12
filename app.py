@@ -13,7 +13,17 @@ def load_image(image_path):
 st.set_page_config(page_title="GNN Output Area Analysis Toolkit", layout="wide", initial_sidebar_state="expanded")
 
 applogo = "img/applogo.png" 
-
+st.markdown(
+    """
+    <style>
+        [data-testid="stSidebar"] {
+            width: 300px !important;
+            min-width: 300px !important;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 st.markdown("""
 <style>
