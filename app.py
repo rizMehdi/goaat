@@ -64,6 +64,9 @@ st.markdown(
         [data-testid="stAppViewContainer"] {
             margin-top: -50px;
         }
+        [data-testid="stHorizontalBlock"] {
+            padding-left: 0px;
+        }
     </style>
     """,
     unsafe_allow_html=True
