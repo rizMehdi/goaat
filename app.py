@@ -110,19 +110,22 @@ else:
 # Show Images Button
 if city and category and st.sidebar.button("Show Results"):
     category_path = category_mapping[category]
-    left_image_path = f"img/{city}.png"
-    # right_image_path = f"img/{city}_{category_path}_{classification}.png"
-    # right_image_path = f"img/{city}_{classification}_{category_path}.png"
-    right_image_path = f"img/{city}_{classNum}_{category_path}.png"
-    # Birmingham_Property_Class_0.png prev
-    # Birmingham_0_HouseOwnership.png new
-    st.write(right_image_path)
+    # left_image_path = f"img/{city}.png"
+    # # right_image_path = f"img/{city}_{category_path}_{classification}.png"
+    # # right_image_path = f"img/{city}_{classification}_{category_path}.png"
+    # right_image_path = f"img/{city}_{classNum}_{category_path}.png"
+    # # Birmingham_Property_Class_0.png prev
+    # # Birmingham_0_HouseOwnership.png new
+    # # img/Birmingham_0_HouseOwnership.png
+    # st.write(right_image_path)
     
-    left_image = load_image(left_image_path)
-    right_image = load_image(right_image_path)
+    # left_image = load_image(left_image_path)
+    # # st.write(left_image_path)
+    # right_image = load_image(right_image_path)
+    # st.write(right_image_path)
     
-    if right_image:
-        right_image = right_image.rotate(-90, expand=True)
+    # if right_image:
+    #     right_image = right_image.rotate(-90, expand=True)
     
     col0, col1 = st.columns(2)
         
@@ -140,8 +143,12 @@ if city and category and st.sidebar.button("Show Results"):
         for i, tab in enumerate(tabs):
             with tab:
                 classification = classifications[i]
-                right_image_path = f"img/{city}_{category_path}_{classification}.png"
-                ethnicity_image_path = f"img/{city}_Eth_Class_{classification[-1]}.png"
+                classN = classNum[i]
+                # right_image_path = f"img/{city}_{category_path}_{classification}.png"
+                right_image_path = f"img/{city}_{classN}_{category_path}.png"
+                
+                # ethnicity_image_path = f"img/{city}_Eth_Class_{classification[-1]}.png"
+                ethnicity_image_path = f"img/{city}_{classN}_Ethnicity.png"
                 
                 right_image = load_image(right_image_path)
                 ethnicity_image = load_image(ethnicity_image_path)
