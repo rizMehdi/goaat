@@ -65,7 +65,7 @@ st.markdown(
             margin-top: -50px;
         }
         [data-testid="stHorizontalBlock"] {
-            padding-left: 0px;
+            padding-left: -50px;
         }
     </style>
     """,
