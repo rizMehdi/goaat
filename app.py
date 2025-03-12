@@ -155,27 +155,28 @@ with side2:
 col1 = st.columns([1])[0]  # Main section column
 
 with col1:
-    st.markdown('<div class="scrollable-column">', unsafe_allow_html=True)
-    tabs = st.tabs(classifications)
-    
-    for i, tab in enumerate(tabs):
-        with tab:
-            classification = classifications[i]
-            right_image_path = f"img/{city}_{classification[-1]}_{category_path}.png"
-            ethnicity_image_path = f"img/{city}_{classification[-1]}_Ethnicity.png"
+    if city and category and st.sidebar.button("Show Results"):
+        st.markdown('<div class="scrollable-column">', unsafe_allow_html=True)
+        tabs = st.tabs(classifications)
+        
+        for i, tab in enumerate(tabs):
+            with tab:
+                classification = classifications[i]
+                right_image_path = f"img/{city}_{classification[-1]}_{category_path}.png"
+                ethnicity_image_path = f"img/{city}_{classification[-1]}_Ethnicity.png"
 
-            right_image = load_image(right_image_path)
-            ethnicity_image = load_image(ethnicity_image_path)
-            
-            if ethnicity_image:
-                st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}")
-            else:
-                st.error("Ethnicity pie chart for this city/class is yet to be integrated.")
-            
-            if right_image:
-                st.image(right_image, caption=f"{classification} for {category} in {city}. This graph shows different features for {city} as compared to the national average. Higher value means its above national average.")
-            else:
-                st.error("Further data for this category/class is yet to be integrated.")
+                right_image = load_image(right_image_path)
+                ethnicity_image = load_image(ethnicity_image_path)
+                
+                if ethnicity_image:
+                    st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}")
+                else:
+                    st.error("Ethnicity pie chart for this city/class is yet to be integrated.")
+                
+                if right_image:
+                    st.image(right_image, caption=f"{classification} for {category} in {city}. This graph shows different features for {city} as compared to the national average. Higher value means its above national average.")
+                else:
+                    st.error("Further data for this category/class is yet to be integrated.")
     st.markdown('</div>', unsafe_allow_html=True)
 
 # Display logos at the bottom of the sidebar
