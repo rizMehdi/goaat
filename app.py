@@ -145,11 +145,11 @@ if city and category and st.sidebar.button("Show Results"):
             st.error("Map Data for this city is yet to be integrated.")
     
     with col1:
-        with st.container():  # Make col1 scrollable
-            tabs = st.tabs(classifications)
-            
-            for i, tab in enumerate(tabs):
-                with tab:
+        tabs = st.tabs(classifications)
+        
+        for i, tab in enumerate(tabs):
+            with tab:
+                with st.container(height=600):
                     classification = classifications[i]
                     right_image_path = f"img/{city}_{classification[-1]}_{category_path}.png"
                     ethnicity_image_path = f"img/{city}_{classification[-1]}_Ethnicity.png"
