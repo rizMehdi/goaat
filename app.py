@@ -1,7 +1,7 @@
 import streamlit as st
 from PIL import Image
 import os
-from hydralit import HydraHeadApp, HydraApp
+from hydralit_components import HydraHeadApp, HydraApp
 
 def load_image(image_path):
     if os.path.exists(image_path):
