@@ -7,7 +7,8 @@ def load_image(image_path):
         return Image.open(image_path)
     else:
         return None
-    
+
+graphwidth = 500
 
 # Streamlit App Configuration
 st.set_page_config(page_title="GNN Output Area Analysis Toolkit", layout="wide", initial_sidebar_state="expanded")
@@ -161,12 +162,12 @@ if city and category and st.sidebar.button("Show Results"):
                     ethnicity_image = load_image(ethnicity_image_path)
                     
                     if ethnicity_image:
-                        st.image(ethnicity_image, width=550)
+                        st.image(ethnicity_image, width=graphwidth)
                     else:
                         st.error("Ethnicity data for this city/class is yet to be integrated.")
                     
                     if right_image:
-                        st.image(right_image, caption=f"{classification} for {category} in {city}. This graph shows different features for {city} as compared to the national average. Higher value means its above national average.", width=550)
+                        st.image(right_image, caption=f"{classification} for {category} in {city}. This graph shows different features for {city} as compared to the national average. Higher value means its above national average.", width=graphwidth)
                     else:
                         st.error("Further data for this category/class is yet to be integrated.")
 
