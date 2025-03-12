@@ -8,7 +8,7 @@ def load_image(image_path):
     else:
         return None
 
-graphwidth = 500
+graphwidth = 530
 
 # Streamlit App Configuration
 st.set_page_config(page_title="GNN Output Area Analysis Toolkit", layout="wide", initial_sidebar_state="expanded")
