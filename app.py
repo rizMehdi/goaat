@@ -1,7 +1,6 @@
 import streamlit as st
 from PIL import Image
 import os
-from hydralit_components import HydraHeadApp, HydraApp
 
 def load_image(image_path):
     if os.path.exists(image_path):
@@ -129,51 +128,84 @@ else:
     classification = None
     classNum=None
 
-class ClassificationApp(HydraHeadApp):
-    def __init__(self, classification, city, category, category_path):
-        self.classification = classification
-        self.city = city
-        self.category = category
-        self.category_path = category_path
-
-    def run(self):
-        right_image_path = f"img/{self.city}_{self.classification[-1]}_{self.category_path}.png"
-        ethnicity_image_path = f"img/{self.city}_{self.classification[-1]}_Ethnicity.png"
-
-        right_image = load_image(right_image_path)
-        ethnicity_image = load_image(ethnicity_image_path)
-        
-        if ethnicity_image:
-            st.image(ethnicity_image, width=550)
-        else:
-            st.error("Ethnicity data for this city/class is yet to be integrated.")
-        
-        if right_image:
-            st.image(right_image, caption=f"{self.classification} for {self.category} in {self.city}. This graph shows different features for {self.city} as compared to the national average. Higher value means its above national average.", width=550)
-        else:
-            st.error("Further data for this category/class is yet to be integrated.")
-
 # Show Images Button
 if city and category and st.sidebar.button("Show Results"):
     category_path = category_mapping[category]
     left_image_path = f"img/{city}.png"
+# # right_image_path = f"img/{city}_{category_path}_{classification}.png"
+    # # right_image_path = f"img/{city}_{classification}_{category_path}.png"
+    # right_image_path = f"img/{city}_{classNum}_{category_path}.png"
+    # # Birmingham_Property_Class_0.png prev
+    # # Birmingham_0_HouseOwnership.png new
+    # # img/Birmingham_0_HouseOwnership.png
+    # st.write(right_image_path)
+    # # right_image_path = f"img/{city}_{category_path}_{classification}.png"
+    # # right_image_path = f"img/{city}_{classification}_{category_path}.png"
+    # right_image_path = f"img/{city}_{classNum}_{category_path}.png"
+    # # Birmingham_Property_Class_0.png prev
+    # # Birmingham_0_HouseOwnership.png new
+    # # img/Birmingham_0_HouseOwnership.png
+    # st.write(right_image_path)
     
     left_image = load_image(left_image_path)
+    # st.write(left_image_path)
+    # right_image = load_image(right_image_path)
+    # st.write(right_image_path)
     
-    col0, pad, col1 = st.columns([1, 0.2, 2])  # Ratio 1:2
+    # if right_image:
+    #     right_image = right_image.rotate(-90, expand=True)
+    
+    # col0, col1 = st.columns(2)
+    col0, pad, col1 = st.columns([1,0.2 ,2])  # Ratio 1:2
         
     with col0:
         st.markdown('<div style="padding-top: 40px;"></div>', unsafe_allow_html=True)  # Add extra padding on top
+    #     st.markdown(
+    #     """
+    #     <div style="background-color:#fffcfa; padding-top:20px;">
+    #     </div>
+    #     """,
+    #     unsafe_allow_html=True
+    # )
         if left_image:
             st.image(left_image, caption=f"{city}", width=350)
         else:
             st.error("Data for this city is yet to be integrated.")
+        
     
     with col1:
-        nav = HydraApp(title='Classification Navigation')
-        for classification in classifications:
-            nav.add_app(classification, ClassificationApp(classification, city, category, category_path))
-        nav.run()
+
+        tabs = st.tabs(classifications)
+        
+        for i, tab in enumerate(tabs):
+            with tab:
+                classification = classifications[i]
+                # classN = classNum[i]
+                # right_image_path = f"img/{city}_{category_path}_{classification}.png"
+                right_image_path = f"img/{city}_{classification[-1]}_{category_path}.png"
+                # st.write(right_image_path)
+                
+                # ethnicity_image_path = f"img/{city}_Eth_Class_{classification[-1]}.png"
+                ethnicity_image_path = f"img/{city}_{classification[-1]}_Ethnicity.png"
+                # st.write(left_image_path)
+
+                right_image = load_image(right_image_path)
+                ethnicity_image = load_image(ethnicity_image_path)
+                
+                if ethnicity_image:
+                    st.image(ethnicity_image,width=550)
+                    # st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}",width=550)
+                else:
+                    st.error("Ethnicity data for this city/class is yet to be integrated.")
+               
+                # if right_image:
+                #     right_image = right_image.rotate(-90, expand=True)
+                
+                if right_image:
+                    st.image(right_image, caption=f"{classification} for {category} in {city}. This graph shows different features for {city} as compared to the national average. Higher value means its above national average.", width=550)
+                else:
+                    st.error("Further data for this category/class is yet to be integrated.")
+                
 
 # Display logos at the bottom of the sidebar
 st.sidebar.markdown("---")  # Add a line above the logos
