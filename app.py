@@ -102,7 +102,7 @@ categories = list(category_mapping.keys())
 classifications = [f"Class_{i}" for i in range(8)]
 classNum = [f"i" for i in range(8)]
 
-city = st.sidebar.selectbox("Select a Location", [""] + cities)
+city = st.sidebar.selectbox("Select a Location", [""] + cities, key="city_selectbox")
 
 if city:
     category = st.sidebar.selectbox("Select a Category", [""] + categories, key=f"category_{city}")
@@ -112,7 +112,6 @@ else:
 if category:
     classification = "Class_0"
     classNum="0"
-    
 else:
     classification = None
     classNum=None
@@ -129,9 +128,9 @@ if city and category and st.sidebar.button("Show Results"):
     with side1:
         # Existing sidebar content
         st.title("GNN Output Area Analysis Toolkit")
-        city = st.selectbox("Select a Location", [""] + cities)
+        city = st.selectbox("Select a Location", [""] + cities, key="side1_city_selectbox")
         if city:
-            category = st.selectbox("Select a Category", [""] + categories, key=f"category_{city}")
+            category = st.selectbox("Select a Category", [""] + categories, key=f"side1_category_{city}")
         else:
             category = None
 
