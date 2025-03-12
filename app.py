@@ -102,76 +102,76 @@ categories = list(category_mapping.keys())
 classifications = [f"Class_{i}" for i in range(8)]
 classNum = [f"i" for i in range(8)]
 
-city = st.sidebar.selectbox("Select a Location", [""] + cities, key="city_selectbox")
+# city = st.sidebar.selectbox("Select a Location", [""] + cities, key="city_selectbox")
 
-if city:
-    category = st.sidebar.selectbox("Select a Category", [""] + categories, key=f"category_{city}")
-else:
-    category = None
+# if city:
+#     category = st.sidebar.selectbox("Select a Category", [""] + categories, key=f"category_{city}")
+# else:
+#     category = None
 
-if category:
-    classification = "Class_0"
-    classNum="0"
-else:
-    classification = None
-    classNum=None
+# if category:
+#     classification = "Class_0"
+#     classNum="0"
+# else:
+#     classification = None
+#     classNum=None
 
 # Show Images Button
-if city and category and st.sidebar.button("Show Results"):
-    category_path = category_mapping[category]
-    left_image_path = f"img/{city}.png"
+# if city and category and st.sidebar.button("Show Results"):
+#     category_path = category_mapping[category]
+#     left_image_path = f"img/{city}.png"
     
-    left_image = load_image(left_image_path)
+#     left_image = load_image(left_image_path)
     
-    side1, side2 = st.sidebar.columns([1, 1])  # Split sidebar into two columns
+side1, side2 = st.sidebar.columns([1, 2])  # Split sidebar into two columns
     
-    with side1:
-        # Existing sidebar content
-        st.title("GNN Output Area Analysis Toolkit")
-        city = st.selectbox("Select a Location", [""] + cities, key="side1_city_selectbox")
-        if city:
-            category = st.selectbox("Select a Category", [""] + categories, key=f"side1_category_{city}")
-        else:
-            category = None
+with side1:
+    # Existing sidebar content
+    st.title("GNN Output Area Analysis Toolkit")
+    city = st.selectbox("Select a Location", [""] + cities, key="side1_city_selectbox")
+    if city:
+        category = st.selectbox("Select a Category", [""] + categories, key=f"side1_category_{city}")
+    else:
+        category = None
 
-        if category:
-            classification = "Class_0"
-            classNum = "0"
-        else:
-            classification = None
-            classNum = None
+    if category:
+        classification = "Class_0"
+        classNum = "0"
+    else:
+        classification = None
+        classNum = None
 
-    with side2:
-        if left_image:
-            st.image(left_image, caption=f"{city}", width=350)
-        else:
-            st.error("Data for this city is yet to be integrated.")
-    
-    col1 = st.columns([1])[0]  # Main section column
-    
-    with col1:
-        st.markdown('<div class="scrollable-column">', unsafe_allow_html=True)
-        tabs = st.tabs(classifications)
-        
-        for i, tab in enumerate(tabs):
-            with tab:
-                classification = classifications[i]
-                right_image_path = f"img/{city}_{classification[-1]}_{category_path}.png"
-                ethnicity_image_path = f"img/{city}_{classification[-1]}_Ethnicity.png"
+with side2:
+    if left_image:
+        st.image(left_image, caption=f"{city}", width=350)
+    else:
+        st.error("Data for this city is yet to be integrated.")
 
-                right_image = load_image(right_image_path)
-                ethnicity_image = load_image(ethnicity_image_path)
-                
-                if ethnicity_image:
-                    st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}")
-                else:
-                    st.error("Ethnicity pie chart for this city/class is yet to be integrated.")
-                
-                if right_image:
-                    st.image(right_image, caption=f"{classification} for {category} in {city}. This graph shows different features for {city} as compared to the national average. Higher value means its above national average.")
-                else:
-                    st.error("Further data for this category/class is yet to be integrated.")
-        st.markdown('</div>', unsafe_allow_html=True)
+col1 = st.columns([1])[0]  # Main section column
+
+with col1:
+    st.markdown('<div class="scrollable-column">', unsafe_allow_html=True)
+    tabs = st.tabs(classifications)
+    
+    for i, tab in enumerate(tabs):
+        with tab:
+            classification = classifications[i]
+            right_image_path = f"img/{city}_{classification[-1]}_{category_path}.png"
+            ethnicity_image_path = f"img/{city}_{classification[-1]}_Ethnicity.png"
+
+            right_image = load_image(right_image_path)
+            ethnicity_image = load_image(ethnicity_image_path)
+            
+            if ethnicity_image:
+                st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}")
+            else:
+                st.error("Ethnicity pie chart for this city/class is yet to be integrated.")
+            
+            if right_image:
+                st.image(right_image, caption=f"{classification} for {category} in {city}. This graph shows different features for {city} as compared to the national average. Higher value means its above national average.")
+            else:
+                st.error("Further data for this category/class is yet to be integrated.")
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # Display logos at the bottom of the sidebar
 st.sidebar.markdown("---")  # Add a line above the logos
