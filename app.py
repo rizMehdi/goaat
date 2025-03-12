@@ -74,18 +74,7 @@ st.markdown("""
 #     unsafe_allow_html=True
 # )
 
-# # Inject CSS for scrollable column
-# st.markdown(
-#     """
-#     <style>
-#         .scrollable-column {
-#             max-height: 600px;
-#             overflow-y: auto;
-#         }
-#     </style>
-#     """,
-#     unsafe_allow_html=True
-# )
+
 
 # Display images if they exist
 if os.path.exists(applogo):
@@ -98,7 +87,7 @@ st.sidebar.title("GNN Output Area Analysis Toolkit")
 # if st.sidebar.button("Restart"):
 #     if st.sidebar.confirm("Are you sure you want to reset the selections?"):
 #         st.experimental_rerun()
-
+z
 cities = ["Birmingham", "Bradford", "York", "Bristol", "London", "Manchester", "Leeds", "Liverpool", "Sheffield", "Coventry", "Leicester", "Nottingham", "Newcastle", "Southampton", "Portsmouth", "Brighton", "Plymouth", "Derby", "Stoke-on-Trent", "Wolverhampton", "Norwich", "Oxford", "Cambridge", "Bath", "Exeter", "Durham", "Lancaster", "Chester", "Hull", "Sunderland", "Ipswich", "Reading", "Milton Keynes", "Northampton", "Luton", "Swindon", "Worcester", "Gloucester", "Carlisle", "Lincoln", "Chelmsford", "Preston", "Blackpool", "Bolton", "Stockport", "Warrington", "Rochdale", "Oldham", "Bournemouth", "Poole", "Worthing", "Basildon", "Southend-on-Sea", "Middlesbrough", "Blackburn", "Burnley", "Telford", "Slough", "Wakefield", "Doncaster", "Rotherham", "Huddersfield", "Southport", "Peterborough", "Guildford", "Basingstoke", "Woking"]
 
 category_mapping = {
@@ -132,39 +121,64 @@ else:
 if city and category and st.sidebar.button("Show Results"):
     category_path = category_mapping[category]
     left_image_path = f"img/{city}.png"
+    # # right_image_path = f"img/{city}_{category_path}_{classification}.png"
+    # # right_image_path = f"img/{city}_{classification}_{category_path}.png"
+    # right_image_path = f"img/{city}_{classNum}_{category_path}.png"
+    # # Birmingham_Property_Class_0.png prev
+    # # Birmingham_0_HouseOwnership.png new
+    # # img/Birmingham_0_HouseOwnership.png
+    # st.write(right_image_path)
     
     left_image = load_image(left_image_path)
+    # st.write(left_image_path)
+    # right_image = load_image(right_image_path)
+    # st.write(right_image_path)
     
+    # if right_image:
+    #     right_image = right_image.rotate(-90, expand=True)
+    
+    # col0, col1 = st.columns(2)
     col0, col1 = st.columns([1, 2])  # Ratio 1:2
         
-    if left_image:
-        st.sidebar.image(left_image, caption=f"{city}", width=350)
-    else:
-        st.sidebar.error("Data for this city is yet to be integrated.")
+    with col0:
+        if left_image:
+            st.image(left_image, caption=f"{city}", width=350)
+        else:
+            st.error("Data for this city is yet to be integrated.")
+        
     
     with col1:
-        st.markdown('<div class="scrollable-column">', unsafe_allow_html=True)
+
         tabs = st.tabs(classifications)
         
         for i, tab in enumerate(tabs):
             with tab:
                 classification = classifications[i]
+                # classN = classNum[i]
+                # right_image_path = f"img/{city}_{category_path}_{classification}.png"
                 right_image_path = f"img/{city}_{classification[-1]}_{category_path}.png"
+                # st.write(right_image_path)
+                
+                # ethnicity_image_path = f"img/{city}_Eth_Class_{classification[-1]}.png"
                 ethnicity_image_path = f"img/{city}_{classification[-1]}_Ethnicity.png"
+                # st.write(left_image_path)
 
                 right_image = load_image(right_image_path)
                 ethnicity_image = load_image(ethnicity_image_path)
                 
                 if ethnicity_image:
-                    st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}")
+                    st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}")#, width=400)
                 else:
                     st.error("Ethnicity pie chart for this city/class is yet to be integrated.")
+               
+                # if right_image:
+                #     right_image = right_image.rotate(-90, expand=True)
                 
                 if right_image:
-                    st.image(right_image, caption=f"{classification} for {category} in {city}. This graph shows different features for {city} as compared to the national average. Higher value means its above national average.")
+                    st.image(right_image, caption=f"{classification} for {category} in {city}. This graph shows different features for {city} as compared to the national average. Higher value means its above national average.")#, width=450)
                 else:
                     st.error("Further data for this category/class is yet to be integrated.")
-        st.markdown('</div>', unsafe_allow_html=True)
+                
 
 # Display logos at the bottom of the sidebar
 st.sidebar.markdown("---")  # Add a line above the logos
