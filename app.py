@@ -34,7 +34,7 @@ st.markdown("""
 	.stTabs [data-baseweb="tab"] {
 		height: 30px;
         white-space: pre-wrap;
-		background-color: #fceae3;
+		background-color: #ffffff;
 		border-radius: 4px 4px 0px 0px;
 		gap: 10px;
 		padding-top: 10px;
@@ -154,6 +154,7 @@ if city and category and st.sidebar.button("Show Results"):
         for i, tab in enumerate(tabs):
             with tab:
                 with st.container(height=600):
+                    st.markdown('<div style="background-color: #fceae3">', unsafe_allow_html=True)
                     classification = classifications[i]
                     right_image_path = f"img/{city}_{classification[-1]}_{category_path}.png"
                     ethnicity_image_path = f"img/{city}_{classification[-1]}_Ethnicity.png"
@@ -170,6 +171,7 @@ if city and category and st.sidebar.button("Show Results"):
                         st.image(right_image, caption=f"{classification} for {category} in {city}. This graph shows different features for {city} as compared to the national average. Higher value means its above national average.", width=graphwidth)
                     else:
                         st.error("Further data for this category/class is yet to be integrated.")
+                    # st.markdown('</div>', unsafe_allow_html=True)
 
 # Display logos at the bottom of the sidebar
 st.sidebar.markdown("---")  # Add a line above the logos
