@@ -147,10 +147,10 @@ with side2:
         category_path = category_mapping[category]
         left_image_path = f"img/{city}.png"
         left_image = load_image(left_image_path)
-    if left_image:
-        st.image(left_image, caption=f"{city}", width=350)
-    else:
-        st.error("Data for this city is yet to be integrated.")
+        if left_image:
+            st.image(left_image, caption=f"{city}", width=350)
+        else:
+            st.error("Data for this city is yet to be integrated.")
 
 col1 = st.columns([1])[0]  # Main section column
 
