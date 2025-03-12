@@ -170,7 +170,7 @@ if city and category and st.sidebar.button("Show Results"):
         if left_image:
             st.image(left_image, caption=f"{city}", width=350)
         else:
-            st.error("Data for this city is yet to be integrated.")
+            st.error("Map Data for this city is yet to be integrated.")
         
     
     with col1:
