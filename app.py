@@ -17,8 +17,8 @@ st.markdown(
     """
     <style>
         [data-testid="stSidebar"] {
-            width: 250px !important;
-            min-width: 250px !important;
+            width: 550px !important;
+            min-width: 550px !important;
         }
     </style>
     """,
@@ -135,12 +135,13 @@ if city and category and st.sidebar.button("Show Results"):
     
     left_image = load_image(left_image_path)
     
-    col0, col1 = st.columns([1, 2])  # Ratio 1:2
-        
-    if left_image:
-        st.sidebar.image(left_image, caption=f"{city}", width=350)
-    else:
-        st.sidebar.error("Data for this city is yet to be integrated.")
+    col0, col1 = st.sidebar.columns([1, 1])  # Split sidebar into two columns
+    
+    with col0:
+        if left_image:
+            st.image(left_image, caption=f"{city}", width=350)
+        else:
+            st.error("Data for this city is yet to be integrated.")
     
     with col1:
         st.markdown('<div class="scrollable-column">', unsafe_allow_html=True)
