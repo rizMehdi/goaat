@@ -146,11 +146,11 @@ if city and category and st.sidebar.button("Show Results"):
                 # classN = classNum[i]
                 # right_image_path = f"img/{city}_{category_path}_{classification}.png"
                 right_image_path = f"img/{city}_{classification[-1]}_{category_path}.png"
-                st.write(right_image_path)
+                # st.write(right_image_path)
                 
                 # ethnicity_image_path = f"img/{city}_Eth_Class_{classification[-1]}.png"
                 ethnicity_image_path = f"img/{city}_{classification[-1]}_Ethnicity.png"
-                st.write(left_image_path)
+                # st.write(left_image_path)
 
                 right_image = load_image(right_image_path)
                 ethnicity_image = load_image(ethnicity_image_path)
