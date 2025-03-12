@@ -196,7 +196,7 @@ if city and category and st.sidebar.button("Show Results"):
                     st.image(ethnicity_image,width=550)
                     # st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}",width=550)
                 else:
-                    st.error("Ethnicity pie chart for this city/class is yet to be integrated.")
+                    st.error("Ethnicity data for this city/class is yet to be integrated.")
                
                 # if right_image:
                 #     right_image = right_image.rotate(-90, expand=True)
