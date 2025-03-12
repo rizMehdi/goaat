@@ -141,7 +141,7 @@ if city and category and st.sidebar.button("Show Results"):
         
     with col0:
         if left_image:
-            st.image(left_image, caption=f"{city}")
+            st.image(left_image, caption=f"{city}", width=300)
         else:
             st.error("Data for this city is yet to be integrated.")
         
