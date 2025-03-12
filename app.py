@@ -17,8 +17,8 @@ st.markdown(
     """
     <style>
         [data-testid="stSidebar"] {
-            width: 650px !important;
-            min-width: 650px !important;
+            width: 250px !important;
+            min-width: 250px !important;
         }
     </style>
     """,
@@ -74,8 +74,7 @@ st.markdown("""
 #     unsafe_allow_html=True
 # )
 
-logo_paths = ["img/logos3.png"]
-logos = [img for img in logo_paths if os.path.exists(img)]
+
 
 # Display images if they exist
 if os.path.exists(applogo):
@@ -103,87 +102,93 @@ categories = list(category_mapping.keys())
 classifications = [f"Class_{i}" for i in range(8)]
 classNum = [f"i" for i in range(8)]
 
-# city = st.sidebar.selectbox("Select a Location", [""] + cities, key="city_selectbox")
+city = st.sidebar.selectbox("Select a Location", [""] + cities)
 
-# if city:
-#     category = st.sidebar.selectbox("Select a Category", [""] + categories, key=f"category_{city}")
-# else:
-#     category = None
+if city:
+    category = st.sidebar.selectbox("Select a Category", [""] + categories, key=f"category_{city}")
+else:
+    category = None
 
-# if category:
-#     classification = "Class_0"
-#     classNum="0"
-# else:
-#     classification = None
-#     classNum=None
+if category:
+    classification = "Class_0"
+    classNum="0"
+    
+else:
+    classification = None
+    classNum=None
 
 # Show Images Button
-# if city and category and st.sidebar.button("Show Results"):
-#     category_path = category_mapping[category]
-#     left_image_path = f"img/{city}.png"
+if city and category and st.sidebar.button("Show Results"):
+    category_path = category_mapping[category]
+    left_image_path = f"img/{city}.png"
+    # # right_image_path = f"img/{city}_{category_path}_{classification}.png"
+    # # right_image_path = f"img/{city}_{classification}_{category_path}.png"
+    # right_image_path = f"img/{city}_{classNum}_{category_path}.png"
+    # # Birmingham_Property_Class_0.png prev
+    # # Birmingham_0_HouseOwnership.png new
+    # # img/Birmingham_0_HouseOwnership.png
+    # st.write(right_image_path)
     
-#     left_image = load_image(left_image_path)
+    left_image = load_image(left_image_path)
+    # st.write(left_image_path)
+    # right_image = load_image(right_image_path)
+    # st.write(right_image_path)
     
-side1, side2 = st.sidebar.columns([1, 2])  # Split sidebar into two columns
+    # if right_image:
+    #     right_image = right_image.rotate(-90, expand=True)
     
-with side1:
-    # Existing sidebar content
-    # st.title("GNN Output Area Analysis Toolkit")
-    city = st.selectbox("Select a Location", [""] + cities, key="side1_city_selectbox")
-    if city:
-        category = st.selectbox("Select a Category", [""] + categories, key=f"side1_category_{city}")
-    else:
-        category = None
-
-    if category:
-        classification = "Class_0"
-        classNum = "0"
-    else:
-        classification = None
-        classNum = None
-    for logo in logos:
-        st.sidebar.image(logo)
-
-with side2:
-    if city and category and st.sidebar.button("Show Results"):
-        category_path = category_mapping[category]
-        left_image_path = f"img/{city}.png"
-        left_image = load_image(left_image_path)
+    # col0, col1 = st.columns(2)
+    col0, col1 = st.columns([1, 2])  # Ratio 1:2
+        
+    with col0:
         if left_image:
             st.image(left_image, caption=f"{city}", width=350)
         else:
             st.error("Data for this city is yet to be integrated.")
-
-    col1 = st.columns([1])[0]  # Main section column
-
+        
+    
     with col1:
+
         tabs = st.tabs(classifications)
+        
         for i, tab in enumerate(tabs):
             with tab:
                 classification = classifications[i]
+                # classN = classNum[i]
+                # right_image_path = f"img/{city}_{category_path}_{classification}.png"
                 right_image_path = f"img/{city}_{classification[-1]}_{category_path}.png"
+                # st.write(right_image_path)
+                
+                # ethnicity_image_path = f"img/{city}_Eth_Class_{classification[-1]}.png"
                 ethnicity_image_path = f"img/{city}_{classification[-1]}_Ethnicity.png"
+                # st.write(left_image_path)
 
                 right_image = load_image(right_image_path)
                 ethnicity_image = load_image(ethnicity_image_path)
                 
                 if ethnicity_image:
-                    st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}")
+                    st.image(ethnicity_image, caption=f"Ethnic distribution for {classification} in {city}")#, width=400)
                 else:
                     st.error("Ethnicity pie chart for this city/class is yet to be integrated.")
+               
+                # if right_image:
+                #     right_image = right_image.rotate(-90, expand=True)
                 
                 if right_image:
-                    st.image(right_image, caption=f"{classification} for {category} in {city}. This graph shows different features for {city} as compared to the national average. Higher value means its above national average.")
+                    st.image(right_image, caption=f"{classification} for {category} in {city}. This graph shows different features for {city} as compared to the national average. Higher value means its above national average.")#, width=450)
                 else:
                     st.error("Further data for this category/class is yet to be integrated.")
-        st.markdown('</div>', unsafe_allow_html=True)
+                
 
 # Display logos at the bottom of the sidebar
 st.sidebar.markdown("---")  # Add a line above the logos
 
+# logo_paths = ["img/prime.png", "img/hwu.png", "img/ukri.png"]
+logo_paths = ["img/logos3.png"]
+logos = [img for img in logo_paths if os.path.exists(img)]
 
-
-
+for logo in logos:
+    st.sidebar.image(logo)
 
 # # Inject custom CSS to change the sidebar background color
 # st.markdown(
