@@ -90,6 +90,7 @@ category_mapping = {
 
 categories = list(category_mapping.keys())
 classifications = [f"Class_{i}" for i in range(8)]
+classNum = [f"i" for i in range(8)]
 
 city = st.sidebar.selectbox("Select a Location", [""] + cities)
 
@@ -100,15 +101,19 @@ else:
 
 if category:
     classification = "Class_0"
+    classNum="0"
+    
 else:
     classification = None
+    classNum=None
 
 # Show Images Button
 if city and category and st.sidebar.button("Show Results"):
     category_path = category_mapping[category]
     left_image_path = f"img/{city}.png"
     # right_image_path = f"img/{city}_{category_path}_{classification}.png"
-    right_image_path = f"img/{city}_{classification}_{category_path}.png"
+    # right_image_path = f"img/{city}_{classification}_{category_path}.png"
+    right_image_path = f"img/{city}_{classNum}_{category_path}.png"
     # Birmingham_Property_Class_0.png prev
     # Birmingham_0_HouseOwnership.png new
     st.write(right_image_path)
